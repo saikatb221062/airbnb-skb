@@ -1,5 +1,5 @@
 class FlatsController < ApplicationController
-  before_action :set_flat, only: [:show, :edit, :update, :destroy]
+  before_action :set_flat, only: %i[show edit update destroy]
 
   # GET /flats
   def index
@@ -7,8 +7,7 @@ class FlatsController < ApplicationController
   end
 
   # GET /flats/1
-  def show
-  end
+  def show; end
 
   # GET /flats/new
   def new
@@ -16,8 +15,7 @@ class FlatsController < ApplicationController
   end
 
   # GET /flats/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /flats
   def create
@@ -46,13 +44,14 @@ class FlatsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_flat
-      @flat = Flat.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def flat_params
-      params.require(:flat).permit(:address, :type)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_flat
+    @flat = Flat.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def flat_params
+    params.require(:flat).permit(:address, :flat_type)
+  end
 end
