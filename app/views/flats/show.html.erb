@@ -1,5 +1,8 @@
 <p id="notice"><%= notice %></p>
 
+<% if @flat.photo.attached? %>
+<%= cl_image_tag @flat.photo.key, width: 300, height: 300, crop: :fill %>
+<% end %>
 <p>
   <strong>Address:</strong>
   <%= @flat.address %>
